@@ -9,14 +9,14 @@ class SmartphoneController extends Controller
 {
   public function index()
   {
-    $smartphone = Phone::all();
-    return view('phone.index',compact('smartphone'));
+    $smartphones = Phone::all();
+    return view('phone.index',compact('smartphones'));
   }
 
   public function show($id)
   {
-  	$smartphone = Phone::find($id);
-    return view('phone.show',compact('smartphone'));
+  	$smartphones = Phone::find($id);
+    return view('phone.show',compact('smartphones'));
   }
 
   public function create()
@@ -33,8 +33,8 @@ class SmartphoneController extends Controller
 
   public function edit($id)
   {
-    $smartphone = Phone::find($id);
-    return view('phone.edit',compact('smartphone'));
+    $smartphones = Phone::find($id);
+    return view('phone.edit',compact('smartphones'));
   }
 
   public function update(Request $request, $id)
