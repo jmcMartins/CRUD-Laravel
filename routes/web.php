@@ -4,16 +4,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/smartphone', 'SmartphoneController@index');
+Route::get('/smartphone', 'SmartphoneController@index');//To usando
 
-Route::get('/smartphone/create', 'SmartphoneController@create');
+Route::delete('/smartphone/{id}', 'SmartphoneController@destroy');//To usando
 
-Route::post('smartphone', 'SmartphoneController@store');
+Route::post('/smartphone', 'SmartphoneController@store');//To usando
+
 
 Route::put('/smartphone/{id}', 'SmartphoneController@update');
 
 Route::get('/smartphone/{id}/edit', 'SmartphoneController@edit');
-
-Route::delete('/smartphone/{id}', 'SmartphoneController@destroy');
-
-Route::get('/smartphone/{id}', 'SmartphoneController@show');

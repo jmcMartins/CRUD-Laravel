@@ -7,28 +7,29 @@ use \App\Phone;
 
 class SmartphoneController extends Controller
 {
-  public function index()
+  public function index()//To usando home/listagem
   {
     $smartphones = Phone::all();
     return view('phone.index',compact('smartphones'));
   }
 
-  public function show($id)
+  public function destroy($id)//To usando exclui
   {
-  	$smartphones = Phone::find($id);
-    return view('phone.show',compact('smartphones'));
+    Phone::find($id)->delete();
+    return redirect('smartphone');
   }
 
-  public function create()
-  {
-    return view('phone.create');
-  }
-
-  public function store(Request $request)
+  public function store(Request $request)//To usando cria arquivo
   {
     Phone::create($request->all());
 
-    return redirect('phone');
+    return redirect('smartphone');
+  }
+
+  public function update(Request $request, $id)//To usando edita
+  {
+    Phone::find($id)->update($request->all());
+    return redirect('smartphone');
   }
 
   public function edit($id)
@@ -37,15 +38,4 @@ class SmartphoneController extends Controller
     return view('phone.edit',compact('smartphones'));
   }
 
-  public function update(Request $request, $id)
-  {
-    Phone::find($id)->update($request->all());
-    return redirect('phone');
-  }
-
-  public function destroy($id)
-  {
-    Phone::find($id)->delete();
-    return redirect('phone');
-  }
 }

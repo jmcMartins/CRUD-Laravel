@@ -64,35 +64,34 @@
                 margin-bottom: 30px;
             }
 
-            .form-inline {
+            .view-cad {
               text-align: center;
               font-size: 15px;
-            }
-            .view-phone {
-              
             }
         </style>
     </head>
       <body>
-          <div class="content">
-              <div class="title m-b-md">
-                  Smartphones
-              </div>
-          </div>
+            <div class="content">
+                <div class="title m-b-md">
+                    Smartphones
+                </div>
+            </div>
 
-            <form class="form-inline">
-              <div class="form-group">
-                  <label for="exampleInputName2"><b>Marca: &nbsp;</b></label>
-                  <input type="text" class="form-control" id="idMarca">&nbsp;
-                  <label for="exampleInputName2"><b>Modelo: &nbsp;</b></label>
-                  <input type="text" class="form-control" id="idModelo">&nbsp;
-                  <label for="exampleInputName2"><b>Observação: &nbsp;</b></label>
-                  <input type="text" class="form-control" id="idObs">&nbsp;
-                  <label for="exampleInputName2"><b>Valor: &nbsp;</b></label>
-                  <input type="double" class="form-control" id="idValor"">&nbsp;
-                  <button type="button" class="btn btn-success">Cadastrar Novo</button>
-              </div>
-            </form>
+            <div class="view-cad">
+                  <b>
+                  {{ Form::open(['url' => 'smartphone', 'method' => 'post']) }}
+                    {{ Form::label('marca', 'Marca:')}}
+                    {{ Form::text('marca', NULL)}}
+                    {{ Form::label('modelo','Modelo:')}}
+                    {{ Form::text('modelo', NULL)}}
+                    {{ Form::label('obs','Observação:')}}
+                    {{ Form::text('obs', NULL)}}
+                    {{ Form::label('valor','Valor:')}}
+                    {{ Form::text('valor', NULL)}}
+                    {{ Form::submit('Cadastrar')}}
+                  {{ Form::close() }}
+                  </b>
+            </div>
             <br>
             <div class='view-phone'>
               <ul class="list-group">
@@ -100,8 +99,15 @@
                   <li class="list-group-item">
                     <p><b>Marca:&nbsp;</b>{{$smartphone->marca}}</p>
                     <p><b>Modelo:&nbsp;</b> {{$smartphone->modelo}}</p>
-                    <p><b>Valor:&nbsp;</b>R$ {{$smartphone->valor}}</p>
                     <p><b>Observação:&nbsp;</b> {{$smartphone->obs}}</p>
+                    <p><b>Valor:&nbsp;</b>R$ {{$smartphone->valor}}</p>
+                    <div class="pos-botao" >
+                      <a href='{{url("/smartphone/{$smartphone->id}/edit")}}'><button>Editar</button></a>
+                      &nbsp
+                      {{ Form::open(['url' => 'smartphone/'.$smartphone->id, 'method' => 'delete']) }}
+                        <button>Apagar</button>
+                      {{ Form::close() }}
+                    </div>
                     <br>
                   </li>
                 @empty
@@ -109,6 +115,5 @@
                 @endforelse
               </ul>
             </div>
-
       </body>
 </html>
