@@ -59,7 +59,6 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
-
             .m-b-md {
                 margin-bottom: 30px;
             }
@@ -67,6 +66,15 @@
             .view-cad {
               text-align: center;
               font-size: 15px;
+            }
+            .pos-botao {
+              float: right;
+              clear: both;
+              margin-top: -85px;
+            }
+            .pos-botao * {
+              width: 100px;
+              margin-bottom: 5px;
             }
         </style>
     </head>
@@ -108,8 +116,8 @@
                         <button>Apagar</button>
                       {{ Form::close() }}
                     </div>
-                    <br>
                   </li>
+                  <hr>
                 @empty
                  <p><b>Nenhum Smartphone Cadastrado</b></p>
                 @endforelse
